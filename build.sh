@@ -18,8 +18,7 @@ PARAM_CLAMAV_SRC_REPOSITORY="https://github.com/Cisco-Talos/clamav.git"
 trap 'cleanup' EXIT
 
 function cleanup() {
-  cd "$REPO_DIR"
-  rm -f build.tar
+  echo "Add cleanup tasks here…"
 }
 
 pushd "$REPO_DIR"
