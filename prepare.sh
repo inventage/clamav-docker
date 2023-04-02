@@ -20,7 +20,6 @@ trap 'cleanup' EXIT
 function cleanup() {
   cd "$REPO_DIR"
   rm -f build.tar
-  docker buildx uninstall
 }
 
 pushd "$REPO_DIR"
@@ -33,7 +32,6 @@ git clone --depth=1 $PARAM_CLAMAV_SRC_REPOSITORY $BUILD_DIR
 cp -r clamav/$PARAM_FEATURE_VERSION/debian/Dockerfile clamav/$PARAM_FEATURE_VERSION/debian/scripts $BUILD_DIR
 
 # Configure docker buildx
-docker buildx install
 if ! docker buildx inspect $PARAM_DOCKER_BUILDX_BUILDER; then
   docker buildx create --name $PARAM_DOCKER_BUILDX_BUILDER --use --bootstrap
 else
